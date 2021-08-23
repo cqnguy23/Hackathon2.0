@@ -8,15 +8,15 @@ const ticketSchema = Schema(
       enum: {
         values: ["not processed", "in progress", "done"],
       },
-      default: "not processed"
+      default: "not processed",
     },
     name: String,
     priority: {
       type: String,
       enum: {
-        values: ["low", "medium", "high"]
+        values: ["low", "medium", "high"],
       },
-      default: "low"
+      default: "low",
     },
     address: String,
     district: String,
@@ -27,6 +27,21 @@ const ticketSchema = Schema(
       enum: {
         values: ["send", "receive"],
       },
+    },
+    date: {
+      type: String,
+      enum: {
+        values: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+      },
+      default: "low",
     },
   },
   {

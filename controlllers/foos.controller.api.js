@@ -18,8 +18,17 @@ const districtArray = [
 ];
 const itemsArray = ["Gạo", "Mì Gói", "Trứng", "Sữa", "Quần Áo", "Dầu Ăn"];
 const itemsType = ["send", "receive"];
+const dateArray = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
 foosController.createTickets = async (req, res, next) => {
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 20; i++) {
     let itemsList = [1, 2, 3, 4];
     itemsList = await Promise.all(
       itemsList.map(async (item) => {
@@ -38,6 +47,7 @@ foosController.createTickets = async (req, res, next) => {
       items: itemsList,
       phoneNumber: faker.phone.phoneNumber(),
       status: statusArray[Math.floor(Math.random() * 3)],
+      date: dateArray[Math.floor(Math.random() * dateArray.length)],
     };
     await Ticket.create(fakeTicket);
   }
