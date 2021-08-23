@@ -21,6 +21,6 @@ mongoose
     console.log("mongoose connect");
   });
 
-app.use("/", indexRouter);
+app.use("/api", indexRouter);
 
 module.exports = app;
