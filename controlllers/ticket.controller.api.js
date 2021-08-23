@@ -19,7 +19,7 @@ ticketController.getTickets = async (req, res, next) => {
 
 ticketController.createTicket = async (req, res, next) => {
   try {
-    let { name, address, phoneNumber, items, type } = req.body;
+    let { name, address, district, phoneNumber, items, type } = req.body;
 
     let itemsObject = await Promise.all(
       items.map((item) => {
@@ -34,6 +34,7 @@ ticketController.createTicket = async (req, res, next) => {
     let request = await Ticket.create({
       name,
       address,
+      district,
       phoneNumber,
       items: itemsObject,
       type,

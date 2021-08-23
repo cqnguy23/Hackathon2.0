@@ -4,6 +4,7 @@ const Ticket = require("../models/ticket.model");
 
 const foosController = {};
 const statusArray = ["not processed", "in progress", "done"];
+const districtArray = ["quận 1", "quận 2", "quận 3", "quận 4", "quận 5", "quận 6", "quận 7", "quận 8", "quận 9", "quận 10"]
 const itemsArray = ["Gạo", "Mì Gói", "Trứng", "Sữa", "Quần Áo", "Dầu Ăn"];
 
 foosController.createTickets = async (req, res, next) => {
@@ -24,6 +25,7 @@ foosController.createTickets = async (req, res, next) => {
 
     const fakeTicket = {
       address: faker.address.streetAddress(),
+      district: districtArray[Math.floor(Math.random() * 10)],
       items: [item1, item2, item3],
       phoneNumber: faker.phone.phoneNumber(),
       status: statusArray[Math.floor(Math.random() * 3)],
