@@ -4,7 +4,7 @@ const ticketController = {};
 
 ticketController.getTickets = async (req, res, next) => {
   try {
-    let tickets = await Ticket.find({})
+    let tickets = await Ticket.find({}).populate("items");
 
     res.status(200).send({
       success: true,
@@ -12,9 +12,8 @@ ticketController.getTickets = async (req, res, next) => {
       message: "GET ALL TICKETS",
     });
   } catch (error) {
-    next(error)
+    next(error);
   }
- 
 };
 
 ticketController.createTicket = async (req, res, next) => {

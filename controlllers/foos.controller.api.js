@@ -4,29 +4,38 @@ const Ticket = require("../models/ticket.model");
 
 const foosController = {};
 const statusArray = ["not processed", "in progress", "done"];
-const districtArray = ["quận 1", "quận 2", "quận 3", "quận 4", "quận 5", "quận 6", "quận 7", "quận 8", "quận 9", "quận 10"]
+const districtArray = [
+  "quận 1",
+  "quận 2",
+  "quận 3",
+  "quận 4",
+  "quận 5",
+  "quận 6",
+  "quận 7",
+  "quận 8",
+  "quận 9",
+  "quận 10",
+];
 const itemsArray = ["Gạo", "Mì Gói", "Trứng", "Sữa", "Quần Áo", "Dầu Ăn"];
-
+const itemsType = ["send", "receive"];
 foosController.createTickets = async (req, res, next) => {
   for (let i = 0; i < 10; i++) {
-    let item1 = await Item.create({
-      name: itemsArray[Math.floor(Math.random() * itemsArray.length)],
-      quantity: Math.floor(Math.random() * 10),
-    });
-    let item2 = await Item.create({
-      name: itemsArray[Math.floor(Math.random() * itemsArray.length)],
-      quantity: Math.floor(Math.random() * 10),
-    });
-
-    let item3 = await Item.create({
-      name: itemsArray[Math.floor(Math.random() * itemsArray.length)],
-      quantity: Math.floor(Math.random() * 10),
-    });
+    let itemsList = [1, 2, 3, 4];
+    itemsList = await Promise.all(
+      itemsList.map(async (item) => {
+        let temp = await Item.create({
+          name: itemsArray[Math.floor(Math.random() * itemsArray.length)],
+          quantity: Math.floor(Math.random() * 10),
+          type: itemsType[Math.floor(Math.random() * itemsType.length)],
+        });
+        return temp;
+      })
+    );
 
     const fakeTicket = {
       address: faker.address.streetAddress(),
       district: districtArray[Math.floor(Math.random() * 10)],
-      items: [item1, item2, item3],
+      items: itemsList,
       phoneNumber: faker.phone.phoneNumber(),
       status: statusArray[Math.floor(Math.random() * 3)],
     };
