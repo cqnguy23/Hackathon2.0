@@ -19,6 +19,7 @@ const ticketSchema = Schema(
       default: "low"
     },
     address: String,
+    district: String,
     phoneNumber: String,
     items: [{ type: Schema.ObjectId, ref: "Item" }],
     type: {
