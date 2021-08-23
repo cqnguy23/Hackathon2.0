@@ -8,9 +8,16 @@ const ticketSchema = Schema(
       enum: {
         values: ["not processed", "in progress", "done"],
       },
+      default: "not processed"
     },
     name: String,
-    priority: Number,
+    priority: {
+      type: String,
+      enum: {
+        values: ["low", "medium", "high"]
+      },
+      default: "low"
+    },
     address: String,
     phoneNumber: String,
     items: [{ type: Schema.ObjectId, ref: "Item" }],
