@@ -2,7 +2,20 @@ const Item = require("../models/item.model");
 const Ticket = require("../models/ticket.model");
 const ticketController = {};
 
-// ticketController.getTickets((req, res, next) => {});
+ticketController.getTickets = async (req, res, next) => {
+  try {
+    let tickets = await Ticket.find({})
+
+    res.status(200).send({
+      success: true,
+      data: tickets,
+      message: "GET ALL TICKETS",
+    });
+  } catch (error) {
+    next(error)
+  }
+ 
+};
 
 ticketController.createTicket = async (req, res, next) => {
   try {

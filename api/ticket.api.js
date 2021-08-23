@@ -9,4 +9,11 @@ const router = express.Router();
  */
 router.post("/", ticketController.createTicket);
 
+/**
+ * @route GET
+ * @description get all the tickets
+ * @access public
+ */
+ router.get("/", ticketController.getTickets);
+
 module.exports = router;
