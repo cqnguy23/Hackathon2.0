@@ -1,5 +1,5 @@
 const express = require("express");
-const ticketController = require("../controlllers/ticket.controller");
+const ticketController = require("../controlllers/ticket.controller.api");
 const router = express.Router();
 
 /**
@@ -7,7 +7,6 @@ const router = express.Router();
  * @description create ticket
  * @access login required
  */
-router.get("/", ticketController.getTickets);
 router.post("/", ticketController.createTicket);
 
 module.exports = router;
