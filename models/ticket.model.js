@@ -6,17 +6,17 @@ const ticketSchema = Schema(
     status: {
       type: String,
       enum: {
-        values: ["Chưa gửi", "Đang gửi", "Hoàn Thành"],
+        values: ["not processed", "in progress", "done"],
       },
-      default: "Chưa gửi",
+      default: "not processed",
     },
     name: { type: String, require: true },
     priority: {
       type: String,
       enum: {
-        values: ["Thấp", "Trung Bình", "Cao"],
+        values: ["low", "medium", "high"],
       },
-      default: "Thấp",
+      default: "low",
     },
     address: String,
     district: String,
@@ -25,23 +25,23 @@ const ticketSchema = Schema(
     type: {
       type: String,
       enum: {
-        values: ["Gửi", "Nhận"],
+        values: ["send", "receive"],
       },
     },
     date: {
       type: String,
       enum: {
         values: [
-          "Thứ Hai",
-          "Thứ Ba",
-          "Thứ Tư",
-          "Thứ Năm",
-          "Thứ Sáu",
-          "Thứ Bảy",
-          "Chủ Nhật",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
         ],
       },
-      default: "Thấp",
+      default: "low",
     },
   },
   {
