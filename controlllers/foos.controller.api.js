@@ -5,16 +5,16 @@ const Ticket = require("../models/ticket.model");
 const foosController = {};
 const statusArray = ["not processed", "in progress", "done"];
 const districtArray = [
-  "quận 1",
-  "quận 2",
-  "quận 3",
-  "quận 4",
-  "quận 5",
-  "quận 6",
-  "quận 7",
-  "quận 8",
-  "quận 9",
-  "quận 10",
+  "Quận 1",
+  "Quận 2",
+  "Quận 3",
+  "Quận 4",
+  "Quận 5",
+  "Quận 6",
+  "Quận 7",
+  "Quận 8",
+  "Quận 9",
+  "Quận 10",
 ];
 const itemsArray = ["Gạo", "Mì Gói", "Trứng", "Sữa", "Quần Áo", "Dầu Ăn"];
 const itemsType = ["send", "receive"];
