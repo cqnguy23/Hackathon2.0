@@ -30,29 +30,28 @@ const dateArray = [
 ];
 foosController.createTickets = async (req, res, next) => {
   for (let i = 0; i < 20; i++) {
+    const fakeTicket = {
+      address: faker.address.streetAddress(),
+      name: faker.name.firstName(),
+      priority: priorityType[Math.floor(Math.random() * priorityType.length)],
+      district: districtArray[Math.floor(Math.random() * 10)],
+      type: type[Math.floor(Math.random() * type.length)],
+      phoneNumber: faker.phone.phoneNumber(),
+      status: statusArray[Math.floor(Math.random() * 3)],
+      date: dateArray[Math.floor(Math.random() * dateArray.length)],
+    };
     let itemsList = [1, 2, 3, 4];
     itemsList = await Promise.all(
       itemsList.map(async (item) => {
         let temp = await Item.create({
           name: itemsArray[Math.floor(Math.random() * itemsArray.length)],
           quantity: Math.ceil(Math.random() * 10),
+          type: fakeTicket.type,
         });
         return temp;
       })
     );
-
-    const fakeTicket = {
-      address: faker.address.streetAddress(),
-      name: faker.name.firstName(),
-      priority: priorityType[Math.floor(Math.random() * priorityType.length)],
-      district: districtArray[Math.floor(Math.random() * 10)],
-      items: itemsList,
-      type: type[Math.floor(Math.random() * type.length)],
-
-      phoneNumber: faker.phone.phoneNumber(),
-      status: statusArray[Math.floor(Math.random() * 3)],
-      date: dateArray[Math.floor(Math.random() * dateArray.length)],
-    };
+    fakeTicket.items = itemsList;
     await Ticket.create(fakeTicket);
   }
   res.send({ data: "Tickets Created" });

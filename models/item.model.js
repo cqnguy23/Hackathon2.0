@@ -7,6 +7,7 @@ const itemSchema = Schema(
     name: { type: String, require: true },
     quantity: { type: Number, require: true },
     processType: String,
+    type: String,
   },
   {
     timestamps: true,
