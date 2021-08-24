@@ -5,19 +5,19 @@ const Ticket = require("../models/ticket.model");
 const foosController = {};
 const statusArray = ["not processed", "in progress", "done"];
 const districtArray = [
-  "quận 1",
-  "quận 2",
-  "quận 3",
-  "quận 4",
-  "quận 5",
-  "quận 6",
-  "quận 7",
-  "quận 8",
-  "quận 9",
-  "quận 10",
+  "Quận 1",
+  "Quận 2",
+  "Quận 3",
+  "Quận 4",
+  "Quận 5",
+  "Quận 6",
+  "Quận 7",
+  "Quận 8",
+  "Quận 9",
+  "Quận 10",
 ];
 const itemsArray = ["Gạo", "Mì Gói", "Trứng", "Sữa", "Quần Áo", "Dầu Ăn"];
-const itemsType = ["send", "receive"];
+const type = ["send", "receive"];
 const priorityType = ["low", "medium", "high"];
 const dateArray = [
   "Monday",
@@ -36,7 +36,6 @@ foosController.createTickets = async (req, res, next) => {
         let temp = await Item.create({
           name: itemsArray[Math.floor(Math.random() * itemsArray.length)],
           quantity: Math.ceil(Math.random() * 10),
-          type: itemsType[Math.floor(Math.random() * itemsType.length)],
         });
         return temp;
       })
@@ -48,6 +47,8 @@ foosController.createTickets = async (req, res, next) => {
       priority: priorityType[Math.floor(Math.random() * priorityType.length)],
       district: districtArray[Math.floor(Math.random() * 10)],
       items: itemsList,
+      type: type[Math.floor(Math.random() * type.length)],
+
       phoneNumber: faker.phone.phoneNumber(),
       status: statusArray[Math.floor(Math.random() * 3)],
       date: dateArray[Math.floor(Math.random() * dateArray.length)],
