@@ -3,7 +3,7 @@ const faker = require("faker");
 const Ticket = require("../models/ticket.model");
 
 const foosController = {};
-const statusArray = ["not processed", "in progress", "done"];
+const statusArray = ["Chưa gửi", "Đang gửi", "Hoàn Thành"];
 const districtArray = [
   "Quận 1",
   "Quận 2",
@@ -17,16 +17,16 @@ const districtArray = [
   "Quận 10",
 ];
 const itemsArray = ["Gạo", "Mì Gói", "Trứng", "Sữa", "Quần Áo", "Dầu Ăn"];
-const type = ["send", "receive"];
-const priorityType = ["low", "medium", "high"];
+const type = ["Gửi", "Nhận"];
+const priorityType = ["Thấp", "Trung Bình", "Cao"];
 const dateArray = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+  "Thứ Hai",
+  "Thứ Ba",
+  "Thứ Tư",
+  "Thứ Năm",
+  "Thứ Sáu",
+  "Thứ Bảy",
+  "Chủ Nhật",
 ];
 foosController.createTickets = async (req, res, next) => {
   for (let i = 0; i < 20; i++) {
