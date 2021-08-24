@@ -18,6 +18,7 @@ const districtArray = [
 ];
 const itemsArray = ["Gạo", "Mì Gói", "Trứng", "Sữa", "Quần Áo", "Dầu Ăn"];
 const itemsType = ["send", "receive"];
+const priorityType = ["low", "medium", "high"];
 const dateArray = [
   "Monday",
   "Tuesday",
@@ -34,7 +35,7 @@ foosController.createTickets = async (req, res, next) => {
       itemsList.map(async (item) => {
         let temp = await Item.create({
           name: itemsArray[Math.floor(Math.random() * itemsArray.length)],
-          quantity: Math.floor(Math.random() * 10),
+          quantity: Math.ceil(Math.random() * 10),
           type: itemsType[Math.floor(Math.random() * itemsType.length)],
         });
         return temp;
@@ -43,6 +44,8 @@ foosController.createTickets = async (req, res, next) => {
 
     const fakeTicket = {
       address: faker.address.streetAddress(),
+      name: faker.name.firstName(),
+      priority: priorityType[Math.floor(Math.random() * priorityType.length)],
       district: districtArray[Math.floor(Math.random() * 10)],
       items: itemsList,
       phoneNumber: faker.phone.phoneNumber(),

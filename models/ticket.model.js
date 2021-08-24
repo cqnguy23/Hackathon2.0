@@ -10,7 +10,7 @@ const ticketSchema = Schema(
       },
       default: "not processed",
     },
-    name: String,
+    name: { type: String, require: true },
     priority: {
       type: String,
       enum: {
